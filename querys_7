@@ -1,0 +1,28 @@
+CREATE TABLE products (
+   productid INT PRIMARY KEY,
+   productname VARCHAR(50),
+   price DECIMAL(10,2),
+   quantitysold INT,
+   category VARCHAR(50)
+ );
+
+ INSERT INTO products (productid, productname, price, quantitysold, category) VALUES
+   (1, 'Laptop', 	800.00,  5,  'Electronics'),
+   (2, 'Smartphone', 600.00, 10,  'Electronics'),
+   (3, 'Desk Chair', 120.00, 15,  'Furniture'),
+   (4, 'Table',  	200.00,  8,  'Furniture'),
+   (5, 'Notebook', 	5.00, 20,  'Stationery'),
+   (6, 'Pen',      	2.00, 50,  'Stationery');
+select * from products where price >(select avg(price) from products);
+select top 1 productname,price from products order by price desc;
+
+select distinct category,
+(select count(*) from products p2
+ where p2.category=p1.category) as total_product 
+from products p1;
+
+select * from products where quantitysold <(select avg(quantitysold) from products);
+create view  Electronicsview as
+select * from products
+where category = 'Electronics';
+select * from Electronicsview  ;
