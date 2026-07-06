@@ -1,0 +1,18 @@
+ CREATE TABLE employe (
+ empid INT PRIMARY KEY,
+   name VARCHAR(50),
+   department VARCHAR(50),
+   email VARCHAR(50)
+ );
+ INSERT INTO employe (empid, name, department, email) VALUES
+   (1, 'Alice Johnson',  'HR', 'alice.johnson@example.com'),
+   (2, 'Bob Smith',  	'IT',      'bob.smith@example.com'),
+   (3, 'Charlie Brown',  'Finance','charlie.brown@example.com'),
+   (4, 'Diana Prince',   'HR',      'diana.prince@example.com'),
+   (5, 'Eve Adams',  	'IT',      'eve.adams@example.org');
+select name,email from employe where email like '%@example.com';
+select name from employe where name like 'A%';
+select name from employe where name like '%son';
+select name from employe where substring(name,2,1) ='v';
+select name,department from employe where department like'%IT%';
+select name,department from employe where department like lower('%hr%');
