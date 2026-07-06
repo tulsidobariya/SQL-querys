@@ -1,0 +1,72 @@
+create table employees(
+empid int primary key,
+empname varchar (30),
+departmentid int
+);
+ insert into employees (empid,empname,departmentid) values
+ (1,'ram',101),
+ (2,'jon',102),
+ (3,'eva',103),
+ (4,'neer',101),
+ (5,'jashh',null);
+ DROP TABLE departments;
+ create table departments(
+ departmentid int primary key,
+ deptname varchar (50),
+ location varchar(50));
+ insert into departments (departmentid,deptname,location) values
+ (101,'HR','NEW DELHI'),
+ (102,'IT','MUMBA'),
+ (103,'SALES','SURAT'),
+ (104,'FINANCE','CHHANAI');
+ -- List all employees with assigned department names.
+ select employees.empid,
+ employees.empname,
+ departments.deptname
+ from employees
+ inner join departments
+ on employees.departmentid =departments.departmentid;
+ -- left join 
+ select employees.empid,
+ employees.empname,
+ departments.deptname
+ from employees
+ left join departments
+ on employees.departmentid =departments.departmentid;
+ 
+ select departments.departmentid,
+ employees.empname,
+ departments.deptname
+ from employees
+ right join departments
+ on employees.departmentid =departments.departmentid;
+ 
+ SELECT 
+    employees.empid,
+    employees.empname,
+    departments.departmentid,
+    departments.deptname,
+    departments.location
+FROM employees
+FULL OUTER JOIN departments
+ON employees.departmentid = departments.departmentid;
+
+select employees.empid,
+ employees.empname,
+departments.deptname
+from employees
+cross join departments ;
+
+ SELECT empname AS Name FROM employees
+ UNION ALL
+ SELECT deptname FROM departments;
+ 
+ select departmentid  from employees
+ intersect
+ select departmentid  from departments;
+ 
+  select departmentid  from departments
+ except
+ select departmentid  from employees;
+ select * from employees;
+ select * from departments;  
